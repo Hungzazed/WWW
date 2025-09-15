@@ -1,0 +1,32 @@
+<Context>
+    <Resource
+            name="jdbc/shopdb"
+            auth="Container"
+            type="javax.sql.DataSource"
+            maxTotal="20"
+            maxIdle="10"
+            maxWaitMillis="10000" driverClassName="org.mariadb.jdbc.Driver"
+            url="jdbc:mariadb://localhost:3306/shopdb"
+            username="root"
+            password="root_password"/>
+    <Resource
+            name="jdbc/storedb"
+            auth="Container"
+            type="javax.sql.DataSource"
+            maxTotal="20"
+            maxIdle="10"
+            maxWaitMillis="10000" driverClassName="org.mariadb.jdbc.Driver"
+            url="jdbc:mariadb://localhost:3306/storedb"
+            username="root"
+            password="root_password"/>
+    <Resource
+            name="jdbc/accountdb"
+            auth="Container"
+            type="javax.sql.DataSource"
+            maxTotal="20"
+            maxIdle="10"
+            maxWaitMillis="10000" driverClassName="org.mariadb.jdbc.Driver"
+            url="jdbc:mariadb://localhost:3306/accountdb"
+            username="root"
+            password="root_password"/>
+</Context>
