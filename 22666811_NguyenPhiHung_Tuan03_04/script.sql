@@ -53,3 +53,21 @@ INSERT INTO products (id, model, description, quantity, price, imgUrl) VALUES
                                                                            (3, 'Wireless Headphones Sony', 'Noise-canceling over-ear headphones', 50, 349.99, 'sony_headphones.jpg'),
                                                                            (4, 'Smartwatch Apple Watch Series 8', 'Fitness tracker with heart rate monitor', 30, 399.99, 'apple_watch8.jpg'),
                                                                            (5, 'Gaming Mouse Logitech G502', 'High-precision gaming mouse with RGB lighting', 100, 79.99, 'logitech_g502.jpg');
+
+-- For bai04 - Books table
+create table books (
+                       id int primary key,
+                       title varchar(255) not null,
+                       author varchar(255) not null,
+                       price decimal(10,2) not null,
+                       quantity int not null,
+                       imgUrl varchar(255)
+);
+
+-- Insert sample data into the books table
+INSERT INTO books (id, title, author, price, quantity, imgUrl) VALUES
+                                                                    (1, 'Clean Code', 'Robert C. Martin', 34.99, 15, 'clean_code.jpg'),
+                                                                    (2, 'Java: The Complete Reference', 'Herbert Schildt', 59.99, 20, 'java_complete_reference.jpg'),
+                                                                    (3, 'Design Patterns', 'Gang of Four', 49.99, 12, 'design_patterns.jpg'),
+                                                                    (4, 'Spring in Action', 'Craig Walls', 44.99, 18, 'spring_in_action.jpg'),
+                                                                    (5, 'Effective Java', 'Joshua Bloch', 39.99, 25, 'effective_java.jpg');
