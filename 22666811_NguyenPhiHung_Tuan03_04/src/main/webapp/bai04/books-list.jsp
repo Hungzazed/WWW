@@ -6,39 +6,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book Listing</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+            rel="stylesheet">
+    <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+    </script>
 </head>
-<body class="bg-gray-100 font-sans">
-<div class="container mx-auto px-4 py-8">
-    <div class="flex justify-end mb-6">
-        <a href="bookcart" class="text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-md transition duration-300">
+<body class="bg-light">
+<div class="container py-5">
+    <div class="d-flex justify-content-end mb-4">
+        <a href="bookcart" class="btn btn-primary">
             View Cart
         </a>
     </div>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+    <div class="row g-4">
         <c:forEach items="${books}" var="b">
-            <div class="book-class bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition duration-300">
-                <h3 class="text-lg font-semibold text-gray-800 mb-2">${b.title}</h3>
-                <img src="images/${b.imgUrl}" class="hinh w-full h-48 object-cover rounded-md mb-4" alt="${b.title}">
-                <p class="text-gray-600 mb-2">Author: ${b.author}</p>
-                <p class="text-gray-600 mb-4">Price: $${b.price}</p>
-                <form action="${pageContext.request.contextPath}/bookcart" method="post" class="space-y-4">
-                    <div class="flex items-center space-x-2">
-                        <label for="quantity-${b.id}" class="text-sm text-gray-600">Quantity:</label>
-                        <input type="number" id="quantity-${b.id}" name="quantity" value="1" min="1" class="w-16 border border-gray-300 rounded-md p-1 focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <div class="col-12 col-sm-6 col-lg-4">
+                <div class="card h-100 shadow-sm">
+                    <img src="images/${b.imgUrl}" class="card-img-top" alt="${b.title}" style="height: 200px; object-fit: cover;">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">${b.title}</h5>
+                        <p class="card-text mb-1"><strong>Author:</strong> ${b.author}</p>
+                        <p class="card-text mb-3"><strong>Price:</strong> $${b.price}</p>
+
+                        <form action="${pageContext.request.contextPath}/bookcart" method="post" class="mt-auto">
+                            <div class="mb-3 d-flex align-items-center">
+                                <label for="quantity-${b.id}" class="form-label me-2 mb-0">Quantity:</label>
+                                <input type="number" id="quantity-${b.id}" name="quantity" value="1" min="1" class="form-control w-25">
+                            </div>
+                            <input type="hidden" name="id" value="${b.id}">
+                            <input type="hidden" name="price" value="${b.price}">
+                            <input type="hidden" name="title" value="${b.title}">
+                            <input type="hidden" name="author" value="${b.author}">
+                            <input type="hidden" name="action" value="add">
+
+                            <div class="d-flex gap-2">
+                                <button type="submit" name="addToCart" class="btn btn-success w-50">Add To Cart</button>
+                                <a href="${pageContext.request.contextPath}/books?id=${b.id}" class="btn btn-outline-secondary w-50">
+                                    Book Detail
+                                </a>
+                            </div>
+                        </form>
                     </div>
-                    <input type="hidden" name="id" value="${b.id}">
-                    <input type="hidden" name="price" value="${b.price}">
-                    <input type="hidden" name="title" value="${b.title}">
-                    <input type="hidden" name="author" value="${b.author}">
-                    <input type="hidden" name="action" value="add">
-                    <div class="flex space-x-4">
-                        <input type="submit" name="addToCart" value="Add To Cart" class="w-full bg-green-500 text-white py-2 rounded-md hover:bg-green-600 transition duration-300 cursor-pointer">
-                        <a href="${pageContext.request.contextPath}/books?id=${b.id}" class="w-full text-center bg-gray-200 text-gray-800 py-2 rounded-md hover:bg-gray-300 transition duration-300">
-                            Book Detail
-                        </a>
-                    </div>
-                </form>
+                </div>
             </div>
         </c:forEach>
     </div>
