@@ -1,0 +1,53 @@
+### Get All Employees
+GET http://localhost:8080/api/jdbc/employees
+Accept: application/json
+
+### Get Employee by ID
+GET http://localhost:8080/api/jdbc/employees/1
+Accept: application/json
+
+### Create New Employee
+POST http://localhost:8080/api/jdbc/employees
+Content-Type: application/json
+
+{
+  "name": "Nguyen Van A",
+  "role": "Developer"
+}
+
+### Update Employee
+PUT http://localhost:8080/api/jdbc/employees/1
+Content-Type: application/json
+
+{
+  "name": "Nguyen Van A Updated",
+  "role": "Senior Developer"
+}
+
+### Delete Employee
+DELETE http://localhost:8080/api/jdbc/employees/1
+
+### Create Another Employee (for testing)
+POST http://localhost:8080/api/jdbc/employees
+Content-Type: application/json
+
+{
+  "name": "Tran Thi B",
+  "role": "Tester"
+}
+
+### Get Employee by ID (different ID)
+GET http://localhost:8080/api/jdbc/employees/2
+Accept: application/json
+
+### Update Another Employee
+PUT http://localhost:8080/api/jdbc/employees/2
+Content-Type: application/json
+
+{
+  "name": "Tran Thi B Updated",
+  "role": "QA Lead"
+}
+
+### Delete Another Employee
+DELETE http://localhost:8080/api/jdbc/employees/2

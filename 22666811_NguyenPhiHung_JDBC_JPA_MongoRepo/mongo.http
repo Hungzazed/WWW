@@ -1,0 +1,155 @@
+### Create Department first (MongoDB)
+POST http://localhost:8080/api/mongo/departments
+Content-Type: application/json
+
+{
+  "name": "IT Department"
+}
+
+###
+
+### Create another Department (MongoDB)
+POST http://localhost:8080/api/mongo/departments
+Content-Type: application/json
+
+{
+  "name": "HR Department"
+}
+
+###
+
+### Get All Departments (MongoDB)
+GET http://localhost:8080/api/mongo/departments
+Accept: application/json
+
+###
+
+### Get Department by Name (MongoDB)
+GET http://localhost:8080/api/mongo/departments/search/name?name=IT Department
+Accept: application/json
+
+###
+
+### Create Employee with Department (MongoDB)
+POST http://localhost:8080/api/mongo/employees
+Content-Type: application/json
+
+{
+  "name": "Nguyen Van A",
+  "dob": "1990-01-15",
+  "salary": 15000000,
+  "department": {
+    "id": "DEPARTMENT_ID_HERE"
+  }
+}
+
+###
+
+### Create another Employee (MongoDB)
+POST http://localhost:8080/api/mongo/employees
+Content-Type: application/json
+
+{
+  "name": "Tran Thi B",
+  "dob": "1992-05-20",
+  "salary": 12000000,
+  "department": {
+    "id": "DEPARTMENT_ID_HERE"
+  }
+}
+
+###
+
+### Create Employee in HR Department (MongoDB)
+POST http://localhost:8080/api/mongo/employees
+Content-Type: application/json
+
+{
+  "name": "Le Van C",
+  "dob": "1988-08-10",
+  "salary": 18000000,
+  "department": {
+    "id": "HR_DEPARTMENT_ID_HERE"
+  }
+}
+
+###
+
+### 1. Tìm tất cả nhân viên (MongoDB)
+GET http://localhost:8080/api/mongo/employees
+Accept: application/json
+
+###
+
+### 2. Tìm nhân viên theo mã (ID) (MongoDB)
+GET http://localhost:8080/api/mongo/employees/EMPLOYEE_ID_HERE
+Accept: application/json
+
+###
+
+### 3. Tìm nhân viên theo tên (MongoDB)
+GET http://localhost:8080/api/mongo/employees/search/name?name=Nguyen
+Accept: application/json
+
+###
+
+### Tìm nhân viên theo tên (case insensitive) (MongoDB)
+GET http://localhost:8080/api/mongo/employees/search/name?name=van
+Accept: application/json
+
+###
+
+### 4. Tìm danh sách nhân viên theo phòng ban (theo ID) (MongoDB)
+GET http://localhost:8080/api/mongo/employees/search/department/DEPARTMENT_ID_HERE
+Accept: application/json
+
+###
+
+### Tìm danh sách nhân viên theo tên phòng ban (MongoDB)
+GET http://localhost:8080/api/mongo/employees/search/department?departmentName=IT Department
+Accept: application/json
+
+###
+
+### 5. Tìm nhân viên theo khoảng lương (10-16 triệu) (MongoDB)
+GET http://localhost:8080/api/mongo/employees/search/salary/range?minSalary=10000000&maxSalary=16000000
+Accept: application/json
+
+###
+
+### Tìm nhân viên có lương >= 15 triệu (MongoDB)
+GET http://localhost:8080/api/mongo/employees/search/salary/min?salary=15000000
+Accept: application/json
+
+###
+
+### Tìm nhân viên có lương <= 15 triệu (MongoDB)
+GET http://localhost:8080/api/mongo/employees/search/salary/max?salary=15000000
+Accept: application/json
+
+###
+
+### Update Employee (MongoDB)
+PUT http://localhost:8080/api/mongo/employees/EMPLOYEE_ID_HERE
+Content-Type: application/json
+
+{
+  "name": "Nguyen Van A Updated",
+  "dob": "1990-01-15",
+  "salary": 20000000,
+  "department": {
+    "id": "DEPARTMENT_ID_HERE"
+  }
+}
+
+###
+
+### Delete Employee (MongoDB)
+DELETE http://localhost:8080/api/mongo/employees/EMPLOYEE_ID_HERE
+
+###
+
+### Delete Department (MongoDB)
+DELETE http://localhost:8080/api/mongo/departments/DEPARTMENT_ID_HERE
+
+###

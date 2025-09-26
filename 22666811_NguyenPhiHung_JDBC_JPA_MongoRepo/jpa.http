@@ -1,0 +1,144 @@
+### Create Department first
+POST http://localhost:8080/api/jpa/departments
+Content-Type: application/json
+
+{
+  "name": "IT Department"
+}
+
+###
+
+### Create another Department
+POST http://localhost:8080/api/jpa/departments
+Content-Type: application/json
+
+{
+  "name": "HR Department"
+}
+
+###
+
+### Get All Departments
+GET http://localhost:8080/api/jpa/departments
+Accept: application/json
+
+###
+
+### Create Employee with Department
+POST http://localhost:8080/api/jpa/employees
+Content-Type: application/json
+
+{
+  "name": "Nguyen Van A",
+  "dob": "1990-01-15",
+  "salary": 15000000,
+  "department": {
+    "id": 1
+  }
+}
+
+###
+
+### Create another Employee
+POST http://localhost:8080/api/jpa/employees
+Content-Type: application/json
+
+{
+  "name": "Tran Thi B",
+  "dob": "1992-05-20",
+  "salary": 12000000,
+  "department": {
+    "id": 1
+  }
+}
+
+###
+
+### Create Employee in HR Department
+POST http://localhost:8080/api/jpa/employees
+Content-Type: application/json
+
+{
+  "name": "Le Van C",
+  "dob": "1988-08-10",
+  "salary": 18000000,
+  "department": {
+    "id": 2
+  }
+}
+
+###
+
+### 1. Tìm tất cả nhân viên
+GET http://localhost:8080/api/jpa/employees
+Accept: application/json
+
+###
+
+### 2. Tìm nhân viên theo mã (ID)
+GET http://localhost:8080/api/jpa/employees/1
+Accept: application/json
+
+###
+
+### 3. Tìm nhân viên theo tên
+GET http://localhost:8080/api/jpa/employees/search/name?name=Nguyen
+Accept: application/json
+
+###
+
+### Tìm nhân viên theo tên (case insensitive)
+GET http://localhost:8080/api/jpa/employees/search/name?name=van
+Accept: application/json
+
+###
+
+### 4. Tìm danh sách nhân viên theo phòng ban (theo ID)
+GET http://localhost:8080/api/jpa/employees/search/department/1
+Accept: application/json
+
+###
+
+### Tìm danh sách nhân viên theo tên phòng ban
+GET http://localhost:8080/api/jpa/employees/search/department?departmentName=IT Department
+Accept: application/json
+
+###
+
+### 5. Tìm nhân viên theo khoảng lương (10-16 triệu)
+GET http://localhost:8080/api/jpa/employees/search/salary/range?minSalary=10000000&maxSalary=16000000
+Accept: application/json
+
+###
+
+### Tìm nhân viên có lương >= 15 triệu
+GET http://localhost:8080/api/jpa/employees/search/salary/min?salary=15000000
+Accept: application/json
+
+###
+
+### Tìm nhân viên có lương <= 15 triệu
+GET http://localhost:8080/api/jpa/employees/search/salary/max?salary=15000000
+Accept: application/json
+
+###
+
+### Update Employee
+PUT http://localhost:8080/api/jpa/employees/1
+Content-Type: application/json
+
+{
+  "name": "Nguyen Van A Updated",
+  "dob": "1990-01-15",
+  "salary": 20000000,
+  "department": {
+    "id": 1
+  }
+}
+
+###
+
+### Delete Employee
+DELETE http://localhost:8080/api/jpa/employees/3
+
+###
